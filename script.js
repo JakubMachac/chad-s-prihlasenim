@@ -67,11 +67,10 @@ function registrovat() {
    "email":email
   };
 
-  fetch(URL_registrace  , {
-    method: "POST", 
-    body: JSON.stringify(data)
-  }).then(res => res.json())
-  .then(console.log);
+  let opt = { method: "POST", body: JSON.stringify(data) };
+  fetch(URL_registrace, opt)
+    .then(res => res.json())
+    .then(console.log);
 
 
 }
@@ -89,11 +88,9 @@ let data = {
   "username":prijmeno,
   "password":heslo
   };
-
-  fetch(URL_prihlaseni  , {
-    method: "POST", 
-    body: JSON.stringify(data)
-  }).then(res => res.json())
+  let opt = { method: "POST", body: JSON.stringify(data) };
+  fetch(URL_prihlaseni, opt)  
+    .then(res => res.json())
     .then(data => {
     console.log
     token=data.token
@@ -107,11 +104,9 @@ function odhlasit() {
   let data = {};
   data.token = token;
   
-  fetch(URL_odhlaseni , {
-  method: "POST",
-  body: JSON.stringify(data)
-  
-}).then(res => res.json())
+  let opt = { method: "POST", body: JSON.stringify(data) };
+  fetch(URL_odhlaseni, opt)
+  .then(res => res.json())
   .then(data => {
   chatCasovac = clearInterval
   ukazPrihlaseni()
